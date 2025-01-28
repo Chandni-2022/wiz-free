@@ -1,0 +1,139 @@
+
+// import * as React from 'react';
+// import { InputField } from "./InputField";
+// import { ActionButton } from './ActionButton';
+
+// export const LoginPage: React.FC = () => {
+//   return (
+//     <main className="flex relative gap-10 items-center pr-16 bg-indigo-950 max-md:pr-5">
+//       <img
+//         loading="lazy"
+//         src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/c620a29220752ac913cfee97b3aff92262f00205b5458015fc6029d7e15e9868?apiKey=415d78a55fd94a108248afe5c238a8ae&"
+//         alt=""
+//         className="object-contain z-0 self-stretch my-auto aspect-[0.77] min-w-[240px] w-[665px] max-md:max-w-full"
+//       />
+//       <div className="flex z-0 flex-col justify-center items-end self-stretch my-auto min-w-[240px] w-[615px] max-md:max-w-full">
+//         <form className="flex overflow-hidden flex-col justify-center py-16 pr-12 pl-11 max-w-full w-[615px] max-md:px-5">
+//           <h1 className="w-full text-5xl font-bold leading-none text-white whitespace-nowrap max-md:max-w-full max-md:text-4xl">
+//             Login
+//           </h1>
+//           <div className="flex flex-col justify-center self-end mt-16 w-full max-w-[520px] max-md:mt-10 max-md:max-w-full">
+//             <div className="flex gap-10 items-start w-full max-md:max-w-full">
+//               <InputField
+//                 label="Email"
+//                 type="email"
+//                 placeholder="Enter your email"
+//                 id="email"
+//               />
+//             </div>
+//             <div className="flex gap-10 items-start mt-8 w-full max-md:max-w-full">
+//               <InputField
+//                 label="Password"
+//                 type="password"
+//                 placeholder="Enter your password"
+//                 id="password"
+//               />
+//             </div>
+//             <div className="flex overflow-hidden flex-wrap gap-10 items-start mt-8 text-base font-medium max-md:max-w-full">
+//               <ActionButton text="Forgot Password?" variant="secondary" />
+//               <ActionButton text="Login" variant="primary" />
+//             </div>
+//           </div>
+//         </form>
+//         <div className="flex overflow-hidden flex-wrap gap-10 justify-center items-center p-12 max-w-full w-[615px] max-md:px-5">
+//           <div className="flex flex-col grow shrink justify-center self-stretch my-auto text-white min-w-[240px] w-[239px]">
+//             <h2 className="text-2xl font-bold leading-none">New User?</h2>
+//             <p className="mt-3 text-base">Create an account.</p>
+//           </div>
+//           <div className="flex overflow-hidden flex-col grow shrink self-stretch my-auto text-base font-medium text-black whitespace-nowrap min-h-[55px] w-[152px]">
+//             <ActionButton text="Sign-Up" variant="primary" />
+//           </div>
+//         </div>
+//       </div>
+//       <div className="flex absolute bottom-24 z-0 flex-col justify-center self-start left-[110px] min-w-[240px] w-[430px] max-md:max-w-full">
+//         <img
+//           loading="lazy"
+//           src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/1697f35c1acef68c11d70943644d60c4d52452d0fa30577381523729dc4d02eb?apiKey=415d78a55fd94a108248afe5c238a8ae&"
+//           alt=""
+//           className="object-contain max-w-full aspect-[0.65] w-[430px]"
+//         />
+//       </div>
+//     </main>
+//   );
+// }
+
+"use client";
+
+import * as React from "react";
+import { InputField } from "./InputField";
+import { ActionButton } from "./ActionButton";
+import Link from "next/link";
+import Image from "next/image";
+interface LoginPageProps {
+  onSignup: () => void; // Handles navigation to Sign-Up page
+  onLogin: () => void; // Handles navigation to QuizDashBoard
+}
+
+// , onLogin
+export const LoginPage: React.FC<LoginPageProps> = ({ onSignup }) => {
+  return (
+    <main className="flex relative gap-10 items-center pr-16 bg-indigo-950 max-md:pr-5">
+      <Image
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/c620a29220752ac913cfee97b3aff92262f00205b5458015fc6029d7e15e9868?apiKey=415d78a55fd94a108248afe5c238a8ae&"
+        alt=""
+        className="object-contain z-0 self-stretch my-auto aspect-[0.77] min-w-[240px] w-[665px] max-md:max-w-full"
+      />
+      <div className="flex z-0 flex-col justify-center items-end self-stretch my-auto min-w-[240px] w-[615px] max-md:max-w-full">
+        <form className="flex overflow-hidden flex-col justify-center py-16 pr-12 pl-11 max-w-full w-[615px] max-md:px-5">
+          <h1 className="w-full text-5xl font-bold leading-none text-white whitespace-nowrap max-md:max-w-full max-md:text-4xl">
+            Login
+          </h1>
+          <div className="flex flex-col justify-center self-end mt-16 w-full max-w-[520px] max-md:mt-10 max-md:max-w-full">
+            <div className="flex gap-10 items-start w-full max-md:max-w-full">
+              <InputField
+                label="Email"
+                type="email"
+                placeholder="Enter your email"
+                id="email"
+              />
+            </div>
+            <div className="flex gap-10 items-start mt-8 w-full max-md:max-w-full">
+              <InputField
+                label="Password"
+                type="password"
+                placeholder="Enter your password"
+                id="password"
+              />
+            </div>
+            <div className="flex overflow-hidden flex-wrap gap-10 items-start mt-8 text-base font-medium max-md:max-w-full">
+              <ActionButton text="Forgot Password?" variant="secondary" />
+              <Link href="/quizdashboard">
+  <ActionButton text="Login" variant="primary" />
+</Link>
+            </div>
+          </div>
+        </form>
+        <div className="flex overflow-hidden flex-wrap gap-10 justify-center items-center p-12 max-w-full w-[615px] max-md:px-5">
+          <div className="flex flex-col grow shrink justify-center self-stretch my-auto text-white min-w-[240px] w-[239px]">
+            <h2 className="text-2xl font-bold leading-none">New User?</h2>
+            <p className="mt-3 text-base">Create an account.</p>
+          </div>
+          <div className="flex overflow-hidden flex-col grow shrink self-stretch my-auto text-base font-medium text-black whitespace-nowrap min-h-[55px] w-[152px]">
+            {/* Pass the onSignup function to the ActionButton */}
+            <ActionButton text="Sign-Up" variant="primary" onClick={onSignup} />
+          </div>
+        </div>
+      </div>
+      <div className="flex absolute bottom-24 z-0 flex-col justify-center self-start left-[110px] min-w-[240px] w-[430px] max-md:max-w-full">
+        <Image
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/1697f35c1acef68c11d70943644d60c4d52452d0fa30577381523729dc4d02eb?apiKey=415d78a55fd94a108248afe5c238a8ae&"
+          alt=""
+          className="object-contain max-w-full aspect-[0.65] w-[430px]"
+        />
+      </div>
+    </main>
+  );
+};
+
