@@ -31,7 +31,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   variant,
   onClick,
 }) => {
-  const baseClasses = "px-3 py-4 w-60 min-h-[55px]";
+  const baseClasses = "px-3 py-4 w-[240px] min-h-[55px] ";
   const variantClasses =
     variant === "primary"
       ? "text-black bg-sky-300 rounded-lg"

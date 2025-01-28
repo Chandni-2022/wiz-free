@@ -19,6 +19,7 @@ export const QuizInstructions: React.FC<QuizInstructionsProps> = ({ title, subti
             content={section.content}
           />
         ))}
+       
       </article>
      
       {/* <div className="flex py-2 w-full h-full min-h-full max-md:max-w-full" /> */}

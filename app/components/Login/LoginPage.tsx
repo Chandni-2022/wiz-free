@@ -108,12 +108,27 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSignup }) => {
                 id="password"
               />
             </div>
-            <div className="flex overflow-hidden flex-wrap gap-10 items-start mt-8 text-base font-medium max-md:max-w-full">
-              <ActionButton text="Forgot Password?" variant="secondary" />
-              <Link href="/quizdashboard">
-                <ActionButton text="Login" variant="primary" />
-              </Link>
+            <div className="flex  flex-wrap justify-between item-center mt-8 text-base font-medium max-md:flex-col max-w-full w-[615px]  max-md:gap-5">
+            
+              {/* Left-aligned "Forgot Password?" button */}
+              <div className="flex">
+                <ActionButton text="Forgot Password?" variant="secondary" />
+              </div>
+
+              {/* Right-aligned "Login" button */}
+              <div className="flex">
+                <Link href="/quizdashboard">
+                  <button
+                    className="flex overflow-hidden flex-col text-base font-medium text-black min-h-[55px] w-[240px]"
+                  >
+                    <span className="px-3 py-4 max-w-full bg-sky-300 rounded-lg min-h-[55px] w-[240px]">
+                      Log in
+                    </span>
+                  </button>
+                </Link>
+              </div>
             </div>
+
           </div>
         </form>
         <div className="flex overflow-hidden flex-wrap gap-10 justify-center items-center p-12 max-w-full w-[615px] max-md:px-5">
@@ -121,22 +136,40 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSignup }) => {
             <h2 className="text-2xl font-bold leading-none">New User?</h2>
             <p className="mt-3 text-base">Create an account.</p>
           </div>
-          <div className="flex overflow-hidden flex-col grow shrink self-stretch my-auto text-base font-medium text-black whitespace-nowrap min-h-[55px] w-[152px]">
+          <div className="flex overflow-hidden flex-col grow shrink self-stretch my-auto text-base font-medium text-black whitespace-nowrap min-h-[55px] w-[190px]">
             {/* Pass the onSignup function to the ActionButton */}
-            <ActionButton text="Sign-Up" variant="primary" onClick={onSignup} />
+            {/* <ActionButton text="Sign-Up" variant="primary" onClick={onSignup}  /> */}
+            <button
+              onClick={onSignup}
+              className="flex overflow-hidden flex-col text-base font-medium text-black min-h-[55px] w-[190px]"
+            >
+              <span className="px-3 py-4 max-w-full bg-sky-300 rounded-lg min-h-[55px] w-[190px]">
+                Signup
+              </span>
+            </button>
           </div>
         </div>
       </div>
-      <div className="flex absolute bottom-24 z-0 flex-col justify-center self-start left-[110px] min-w-[240px] w-[430px] max-md:max-w-full">
-        <img
+      {/* <div className="flex absolute bottom-24 z-0 flex-col justify-center self-start left-[110px] min-w-[240px] w-[430px] max-md:max-w-full"> */}
+      {/* <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/1697f35c1acef68c11d70943644d60c4d52452d0fa30577381523729dc4d02eb?apiKey=415d78a55fd94a108248afe5c238a8ae&"
           alt=""
           width={429.6}
           height={660}
           className="object-contain max-w-full aspect-[0.65] w-[430px]"
-        />
+        /> */}
+      <div className="flex absolute z-0 flex-col justify-center self-start bottom-[114px] h-[844px] left-[150px] min-h-[844px] min-w-[240px] w-[400px]">
+        <div className="flex flex-col justify-center items-center max-w-full w-[400px]">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/d22fd652f2947c8e8b105011a1ad75a85547fb35946adecf72db88adaf246219?apiKey=415d78a55fd94a108248afe5c238a8ae&"
+            alt=""
+            className="object-contain w-full aspect-[0.61]"
+          />
+        </div>
       </div>
+      {/* </div> */}
     </main>
   );
 };

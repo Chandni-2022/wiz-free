@@ -224,21 +224,22 @@ export const QuizDashboard: React.FC = () => {
 
   return (
     <main className="flex relative flex-col pt-20 bg-indigo-950" role="main">
-      <img
+      {/* <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/00b496098a4d6d978602cbf3828adcf0d38f97bb224e82dcedef7a8a27411088?apiKey=415d78a55fd94a108248afe5c238a8ae&"
         alt=""
         width={1441}
         height={125}
         className="object-contain z-0 self-center w-full aspect-[11.49] max-md:max-w-full"
-      />
+      /> */}
 
-      <div className="flex overflow-hidden z-0 flex-wrap gap-10 justify-center items-center px-44 py-8 w-full text-2xl font-bold leading-none text-white min-h-[130px] max-md:px-5 max-md:max-w-full">
+      {/* User profile */}
+      {/* <div className="flex overflow-hidden z-0 flex-wrap gap-10 justify-center items-center px-44 py-8 w-full text-2xl font-bold leading-none text-white min-h-[130px] max-md:px-5 max-md:max-w-full">
         <div className="flex shrink-0 self-stretch my-auto bg-white h-[70px] rounded-[50px] w-[70px]" role="img" aria-label="User avatar" />
         <div className="flex-1 shrink self-stretch my-auto min-w-[240px] max-md:max-w-full">
           Hello, [User Name]
         </div>
-      </div>
+      </div> */}
 
       <Header userName="User" />
 
@@ -257,6 +258,7 @@ export const QuizDashboard: React.FC = () => {
               </div>
             </div>
           </div>
+         
         </div>
         {/* Dropdown Content (Rules) */}
         <div
@@ -267,8 +269,9 @@ export const QuizDashboard: React.FC = () => {
           <Rules />
            {/* Reusable Rules content component */}
         </div>
+        
       </section>
-
+          
       {/* Search Section */}
       <section className="flex overflow-hidden z-0 gap-10 items-center px-44 py-9 w-full min-h-[130px] max-md:px-5 max-md:max-w-full">
         <SearchBar onSearch={() => {}} />

@@ -8,7 +8,7 @@ import type { NextConfig } from "next";
 
 
 module.exports = {
-  // output: 'export',
+  output: 'export',
   images: {
     remotePatterns: [
       {
