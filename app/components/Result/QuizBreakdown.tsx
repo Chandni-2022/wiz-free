@@ -2,7 +2,6 @@
 import * as React from "react";
 import { ScoreCard } from "./ScoreCard";
 import { QuestionCard } from './QuestionCard';
-import Image from "next/image";
 
 const scoreData = [
   {
@@ -77,10 +76,12 @@ export default function QuizBreakdown() {
               Score Distribution
             </h3>
             <div className="mt-3 max-md:max-w-full">Number of Questions</div>
-            <Image
+            <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/a3da2e6514d888f0b2b46387369875deea22536636c8d91446ad05efda5b4aa9?apiKey=415d78a55fd94a108248afe5c238a8ae&"
               alt="Score distribution graph"
+              width={1100}
+              height={440}
               className="object-contain flex-1 mt-3 w-full aspect-[3.68] max-md:max-w-full"
             />
             <div className="mt-3 text-right max-md:max-w-full">Score</div>
@@ -111,10 +112,12 @@ export default function QuizBreakdown() {
         </div>
       </footer>
 
-      <Image
+      <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/c46f15e2bae0bc557f66810f74596af16de7ab825444e19f3b5f44f86fd894dd?apiKey=415d78a55fd94a108248afe5c238a8ae&"
         alt=""
+        width={40}
+        height={40}
         className="object-contain z-0 self-center w-full aspect-[5.41] max-md:max-w-full"
       />
     </main>

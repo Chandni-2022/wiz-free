@@ -20,7 +20,10 @@ export const QuizInstructions: React.FC<QuizInstructionsProps> = ({ title, subti
           />
         ))}
       </article>
-      <div className="flex py-2 w-full min-h-[272px] max-md:max-w-full" />
+     
+      {/* <div className="flex py-2 w-full h-full min-h-full max-md:max-w-full" /> */}
     </main>
+   
+
   );
 }

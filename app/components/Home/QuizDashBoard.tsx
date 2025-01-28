@@ -206,7 +206,7 @@ import { QuizCard } from "./QuizCard";
 import { SearchBar } from "./SearchBar";
 import { Header } from "./Header";
 import Rules from "../Rule/index";
-import Image from "next/image";
+
 
 const quizCategories = [
   { title: "Technology", description: "Test knowledge of tech " },
@@ -224,10 +224,12 @@ export const QuizDashboard: React.FC = () => {
 
   return (
     <main className="flex relative flex-col pt-20 bg-indigo-950" role="main">
-      <Image
+      <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/00b496098a4d6d978602cbf3828adcf0d38f97bb224e82dcedef7a8a27411088?apiKey=415d78a55fd94a108248afe5c238a8ae&"
         alt=""
+        width={1441}
+        height={125}
         className="object-contain z-0 self-center w-full aspect-[11.49] max-md:max-w-full"
       />
 
@@ -259,10 +261,11 @@ export const QuizDashboard: React.FC = () => {
         {/* Dropdown Content (Rules) */}
         <div
           className={`${
-            isRulesOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+            isRulesOpen ? "max-h-[590px] opacity-100" : "max-h-0 opacity-0"
           } overflow-hidden transition-all duration-500 ease-in-out`}
         >
-          <Rules /> {/* Reusable Rules content component */}
+          <Rules />
+           {/* Reusable Rules content component */}
         </div>
       </section>
 
@@ -298,10 +301,12 @@ export const QuizDashboard: React.FC = () => {
         </div>
       </section>
 
-      <Image
+      <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/9c960803e56a2dae921f7d6f813459133b06fc721c6a5a3f1f0e3a6c294cf209?apiKey=415d78a55fd94a108248afe5c238a8ae&"
         alt=""
+        width={1440}
+        height={200}
         className="object-contain z-0 self-center w-full aspect-[7.19] max-md:max-w-full"
       />
     </main>

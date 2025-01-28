@@ -4,7 +4,7 @@ import { InstructionSectionProps } from "./types";
 
 export const InstructionSection: React.FC<InstructionSectionProps> = ({ title, content }) => {
   return (
-    <div className="flex flex-col justify-center mt-5 w-full max-md:max-w-full">
+    <div className="flex flex-col justify-center mt-5 w-full  max-md:max-w-full">
       <h2 className="text-xl leading-tight max-md:max-w-full">
         {title}
       </h2>

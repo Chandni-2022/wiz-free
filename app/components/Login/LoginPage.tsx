@@ -68,7 +68,7 @@ import * as React from "react";
 import { InputField } from "./InputField";
 import { ActionButton } from "./ActionButton";
 import Link from "next/link";
-import Image from "next/image";
+
 interface LoginPageProps {
   onSignup: () => void; // Handles navigation to Sign-Up page
   onLogin: () => void; // Handles navigation to QuizDashBoard
@@ -77,12 +77,14 @@ interface LoginPageProps {
 // , onLogin
 export const LoginPage: React.FC<LoginPageProps> = ({ onSignup }) => {
   return (
-    <main className="flex relative gap-10 items-center pr-16 bg-indigo-950 max-md:pr-5">
-      <Image
+    <main className="flex relative gap-10 items-center pr-16 bg-indigo-950 max-md:pr-5 ">
+      <img
         loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/c620a29220752ac913cfee97b3aff92262f00205b5458015fc6029d7e15e9868?apiKey=415d78a55fd94a108248afe5c238a8ae&"
+        src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/a5c813bd0f17167552339badf499adf90c927a593e82ffe7d4a48a54953f383c?apiKey=415d78a55fd94a108248afe5c238a8ae&"
         alt=""
-        className="object-contain z-0 self-stretch my-auto aspect-[0.77] min-w-[240px] w-[665px] max-md:max-w-full"
+        width={726}
+        height={1072}
+        className="object-contain z-0 self-stretch my-auto aspect-[0.68] min-w-[240px] w-[726px] max-md:max-w-full"
       />
       <div className="flex z-0 flex-col justify-center items-end self-stretch my-auto min-w-[240px] w-[615px] max-md:max-w-full">
         <form className="flex overflow-hidden flex-col justify-center py-16 pr-12 pl-11 max-w-full w-[615px] max-md:px-5">
@@ -109,8 +111,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSignup }) => {
             <div className="flex overflow-hidden flex-wrap gap-10 items-start mt-8 text-base font-medium max-md:max-w-full">
               <ActionButton text="Forgot Password?" variant="secondary" />
               <Link href="/quizdashboard">
-  <ActionButton text="Login" variant="primary" />
-</Link>
+                <ActionButton text="Login" variant="primary" />
+              </Link>
             </div>
           </div>
         </form>
@@ -126,10 +128,12 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSignup }) => {
         </div>
       </div>
       <div className="flex absolute bottom-24 z-0 flex-col justify-center self-start left-[110px] min-w-[240px] w-[430px] max-md:max-w-full">
-        <Image
+        <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/1697f35c1acef68c11d70943644d60c4d52452d0fa30577381523729dc4d02eb?apiKey=415d78a55fd94a108248afe5c238a8ae&"
           alt=""
+          width={429.6}
+          height={660}
           className="object-contain max-w-full aspect-[0.65] w-[430px]"
         />
       </div>

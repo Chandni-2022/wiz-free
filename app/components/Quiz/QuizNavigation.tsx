@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import Image from "next/image";
+
 
 interface QuizNavigationProps {
   onNext: () => void;
@@ -12,11 +12,13 @@ export const QuizNavigation: React.FC<QuizNavigationProps> = ({ onNext, onFinish
   return (
     <div className="flex flex-wrap grow shrink items-center self-stretch pb-8 my-auto min-w-[240px] w-[963px] max-md:max-w-full">
       <div className="flex overflow-hidden grow shrink gap-2 items-center self-stretch px-1.5 py-1 my-auto w-10 min-h-[50px]">
-        <Image
+        <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/c80a8bd71b399363a8d967952fd589f61038a2a24af88b5e8c0e239d98136de1?apiKey=415d78a55fd94a108248afe5c238a8ae&"
           className="object-contain self-stretch my-auto aspect-[0.88] w-[38px]"
           alt=""
+          width={50}
+          height={50}
         />
       </div>
       <div className="flex flex-col grow shrink self-stretch my-auto min-w-[240px] w-[510px] max-md:max-w-full">

@@ -1,7 +1,7 @@
 "use client";
 import * as React from 'react';
 import { SearchBarProps } from './types';
-import Image from "next/image";
+
 // { onSearch }
 export const SearchBar: React.FC<SearchBarProps> = () => {
   return (
@@ -19,10 +19,12 @@ export const SearchBar: React.FC<SearchBarProps> = () => {
         className="flex gap-2.5 items-center self-stretch p-2.5 my-auto w-11 h-11 bg-indigo-300 rounded-md"
         aria-label="Submit search"
       >
-        <Image
+        <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/4beaf84afea3433ac939406c655cb6f15545babf6973bb4e8f7d265f572c42f7?apiKey=415d78a55fd94a108248afe5c238a8ae&"
           alt=""
+          width={24}
+          height={24}
           className="object-contain self-stretch my-auto w-6 aspect-square"
         />
       </button>

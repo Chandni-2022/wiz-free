@@ -1,15 +1,16 @@
 "use client";
 import * as React from "react";
 import { ScoreCardProps } from "./types";
-import Image from "next/image";
 export const ScoreCard: React.FC<ScoreCardProps> = ({ icon, label, value }) => (
   <div className="flex overflow-hidden flex-wrap grow shrink gap-10 items-center py-5 pl-8 h-full rounded-md min-w-[240px] w-[408px] max-md:max-w-full">
     <div className="flex gap-3 items-center self-stretch my-auto min-w-[240px]">
       {icon && (
-        <Image
+        <img
           loading="lazy"
           src={icon}
           alt=""
+          width={40}
+          height={40}
           className="object-contain shrink-0 self-stretch my-auto w-10 aspect-square"
         />
       )}

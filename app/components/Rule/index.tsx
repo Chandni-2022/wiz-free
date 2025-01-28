@@ -19,7 +19,7 @@ export default function QuizInstructionsPage() {
           "You may skip or attempt as many questions as you like.",
           "Use the Next button to move to the next question.",
           "Use the Finish button to complete the quiz at any point.",
-          "If you do not answer a question or click Next, the quiz will auto-submit based on the answers already provided.",
+          "The quiz will auto-submit if multiple questions are left unanswered or if 'Next' is not clicked for consecutive questions. ",
           "When you reach the end of the quiz, you will see a message: \"No more questions available.\""
         ]
       },

@@ -54,7 +54,7 @@
 "use client";
 import * as React from "react";
 import { SignUpForm } from "./SignUpForm";
-import Image from "next/image";
+
 interface SignUpPageProps {
   onLogin: () => void;
 }
@@ -62,10 +62,12 @@ interface SignUpPageProps {
 export const SignUpPage: React.FC<SignUpPageProps> = ({ onLogin }) => {
   return (
     <main className="flex relative items-center pr-16 bg-indigo-950 max-md:pr-5">
-      <Image
+      <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/a5c813bd0f17167552339badf499adf90c927a593e82ffe7d4a48a54953f383c?apiKey=415d78a55fd94a108248afe5c238a8ae&"
         alt=""
+        width={726}
+        height={1072}
         className="object-contain z-0 self-stretch my-auto aspect-[0.68] min-w-[240px] w-[726px] max-md:max-w-full"
       />
       <div className="flex z-0 flex-col justify-center items-end self-stretch my-auto min-w-[240px] w-[615px] max-md:max-w-full">
@@ -94,7 +96,7 @@ export const SignUpPage: React.FC<SignUpPageProps> = ({ onLogin }) => {
       </div>
       <div className="flex absolute z-0 flex-col justify-center self-start bottom-[114px] h-[844px] left-[150px] min-h-[844px] min-w-[240px] w-[400px]">
         <div className="flex flex-col justify-center items-center max-w-full w-[400px]">
-          <Image
+          <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/415d78a55fd94a108248afe5c238a8ae/d22fd652f2947c8e8b105011a1ad75a85547fb35946adecf72db88adaf246219?apiKey=415d78a55fd94a108248afe5c238a8ae&"
             alt=""
