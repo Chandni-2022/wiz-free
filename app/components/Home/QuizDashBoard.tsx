@@ -206,14 +206,10 @@ import { QuizCard } from "./QuizCard";
 import { SearchBar } from "./SearchBar";
 import { Header } from "./Header";
 import Rules from "../Rule/index";
+import { quizCategories } from "../../Data/cardData";
 
 
-const quizCategories = [
-  { title: "Technology", description: "Test knowledge of tech " },
-  { title: "History", description: "Discover past events" },
-  { title: "Science", description: "Explore the world of science" },
-  { title: "Math Basic", description: "Test your math skills" },
-];
+
 
 export const QuizDashboard: React.FC = () => {
   const [isRulesOpen, setIsRulesOpen] = React.useState(false);
@@ -287,6 +283,7 @@ export const QuizDashboard: React.FC = () => {
                 title={category.title}
                 description={category.description}
                 isHighlighted={index === 0}
+                showDescription={category.showDescription}
               />
             ))}
           </div>
@@ -298,6 +295,8 @@ export const QuizDashboard: React.FC = () => {
                 key={`second-${index}`}
                 title={category.title}
                 description={category.description}
+                isHighlighted={index === 0}
+                showDescription={category.showDescription}
               />
             ))}
           </div>

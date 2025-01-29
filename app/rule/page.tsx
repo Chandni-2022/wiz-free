@@ -5,7 +5,7 @@ import Instructions from "../components/Rule/index"; // Correct way to import th
 
 const QuizInstructionsPage = () => {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="">
       <Instructions /> {/* Render your QuizInstructions component here */}
     </div>
   );
