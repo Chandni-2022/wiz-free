@@ -8,8 +8,8 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "My App",
-  description: "My Next.js app with Roboto font globally applied",
+  title: "Glarimy-wiz Project ",
+  description: "A Next.js app For Quiz",
 };
 
 export default function RootLayout({
@@ -19,7 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} antialiased`}>
+      {/* overflow-hidden */}
+      <body className="min-h-screen  relative mx-auto  lg:max-w-[70rem] xl:max-w-[92rem] 2xl:max-w-[92rem] ">
         {children}
       </body>
     </html>

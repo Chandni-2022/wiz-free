@@ -37,10 +37,11 @@ interface QuizOptionProps {
   text: string;
   value: string;
   name: string;
+  checked?: boolean;
   onChange: (value: string) => void;
 }
 
-export const QuizOption: React.FC<QuizOptionProps> = ({ text, value, name, onChange }) => {
+export const QuizOption: React.FC<QuizOptionProps> = ({ text, value, name, onChange, checked }) => {
   return (
     <div className="flex gap-10 items-center w-full max-md:max-w-full">
     <label className="flex flex-1 shrink gap-4 justify-center items-start self-stretch p-4 my-auto w-full rounded-md border border-white border-solid basis-0 min-w-[240px] max-md:max-w-full">
@@ -51,6 +52,7 @@ export const QuizOption: React.FC<QuizOptionProps> = ({ text, value, name, onCha
             name={name}
             value={value}
             onChange={() => onChange(value)}
+            checked={checked} 
             className="appearance-none h-full w-full bg-white border-2 border-black rounded-[2px] cursor-pointer checked:bg-sky-300"
           />
         </div>

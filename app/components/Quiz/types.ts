@@ -15,6 +15,7 @@ export interface Option {
   id: string;
   text: string;
   value: string;
+  
 }
 
 export interface QuizQuestion {

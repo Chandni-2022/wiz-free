@@ -346,6 +346,73 @@
 // };
 
 
+// "use client";
+// import * as React from "react";
+// import { QuizOption } from "./QuizOption";
+// import type { QuizQuestion as QuizQuestionType } from "./types";
+// import Link from "next/link";
+
+// interface QuizQuestionProps {
+//   question: QuizQuestionType;
+//   onAnswerSelect: (value: string) => void;
+//   onNext: () => void;
+//   onFinish: () => void;
+//   showTimeUp?: boolean; // Added showTimeUp prop
+// }
+
+// export const QuizQuestion: React.FC<QuizQuestionProps> = ({
+//   question,
+//   onAnswerSelect,
+//   onNext,
+  
+//   showTimeUp,
+// }) => {
+//   return (
+//     <div className="flex overflow-hidden flex-wrap gap-5 items-center self-center px-[170px] py-[30px] w-full bg-indigo-950 max-md:px-5 max-md:max-w-full">
+//       <div className="flex flex-col grow shrink self-stretch my-auto text-white min-h-[363px] min-w-[240px] w-[395px] max-md:max-w-full">
+//         <h2 className="text-4xl font-bold leading-none">
+//           Question {question.questionNumber}
+//         </h2>
+//         <p className="mt-6 text-xl leading-tight">{question.questionText}</p>
+//       </div>
+//       <div className="flex gap-[20px] flex-col grow shrink justify-center self-stretch my-auto text-base font-medium leading-loose text-white min-h-[403px] min-w-[240px] w-[421px] max-md:max-w-full">
+//         {question.options.map((option) => (
+//           <QuizOption
+//             key={option.id}
+//             text={option.text}
+//             value={option.value}
+//             name={`question-${question.id}`}
+//             onChange={onAnswerSelect}
+//           />
+//         ))}
+
+//         <div className="flex justify-between items-center mt-5 w-full">
+//           <button
+//             onClick={onNext}
+//             className="px-3 py-4 bg-sky-300 rounded-lg text-black min-w-[152px] w-[190px] text-base font-medium"
+//           >
+//             Next
+//           </button>
+//           <Link href="/result">
+//           <button
+//             // onClick={onFinish}
+//             className="px-3 py-4 bg-transparent rounded-lg text-white border border-white min-w-[152px] w-[190px] text-base font-medium"
+//           >
+//             Finish
+//           </button>
+//           </Link>
+//         </div>
+
+//         {showTimeUp && (
+//           <div className="gap-2 self-stretch p-2 mt-5 w-full text-2xl font-bold leading-10 text-white max-md:max-w-full">
+//             Time is up! Moving to the next question
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
 "use client";
 import * as React from "react";
 import { QuizOption } from "./QuizOption";
@@ -354,17 +421,22 @@ import Link from "next/link";
 
 interface QuizQuestionProps {
   question: QuizQuestionType;
+  selectedAnswer: string | null;
   onAnswerSelect: (value: string) => void;
   onNext: () => void;
   onFinish: () => void;
-  showTimeUp?: boolean; // Added showTimeUp prop
+  showTimeUp?: boolean;
+  
+  
 }
 
 export const QuizQuestion: React.FC<QuizQuestionProps> = ({
   question,
+  selectedAnswer,
+  
   onAnswerSelect,
   onNext,
-  
+  onFinish,
   showTimeUp,
 }) => {
   return (
@@ -382,6 +454,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
             text={option.text}
             value={option.value}
             name={`question-${question.id}`}
+            checked={selectedAnswer === option.value}
             onChange={onAnswerSelect}
           />
         ))}
@@ -394,12 +467,12 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
             Next
           </button>
           <Link href="/result">
-          <button
-            // onClick={onFinish}
-            className="px-3 py-4 bg-transparent rounded-lg text-white border border-white min-w-[152px] w-[190px] text-base font-medium"
-          >
-            Finish
-          </button>
+            <button
+              onClick={onFinish}
+              className="px-3 py-4 bg-transparent rounded-lg text-white border border-white min-w-[152px] w-[190px] text-base font-medium"
+            >
+              Finish
+            </button>
           </Link>
         </div>
 
