@@ -1,6 +1,6 @@
 // app/quiz/page.tsx
 import React from "react";
-import { Quiz } from "../components/Quiz/Quiz";
+import Quiz  from "../components/Quiz/Quiz";
 import { quizData } from "../Data/quizData"; // Importing the quiz data
 
 const QuizInstructionsPage = () => {
@@ -8,7 +8,7 @@ const QuizInstructionsPage = () => {
 
   return (
     <div className="min-h-screen bg-indigo-950 ">
-      <Quiz topicName={selectedQuiz.topicName} questions={selectedQuiz.questions} />
+      <Quiz  />
     </div>
   );
 };

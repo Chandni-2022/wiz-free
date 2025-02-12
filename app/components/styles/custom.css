@@ -1,0 +1,16 @@
+/* custom.css */
+@media (max-width: 1399px) {
+    .hidden-lg-custom {
+      display: none;
+    }
+  }
+
+
+
+  /* custom.css */
+.break-words {
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+  
+  

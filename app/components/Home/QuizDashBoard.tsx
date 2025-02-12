@@ -21,7 +21,7 @@
 //         alt=""
 //         className="object-contain z-0 self-center w-full aspect-[11.49] max-md:max-w-full"
 //       />
-      
+
 //       <div className="flex overflow-hidden z-0 flex-wrap gap-10 justify-center items-center px-44 py-8 w-full text-2xl font-bold leading-none text-white min-h-[130px] max-md:px-5 max-md:max-w-full">
 //         <div className="flex shrink-0 self-stretch my-auto bg-white h-[70px] rounded-[50px] w-[70px]" role="img" aria-label="User avatar" />
 //         <div className="flex-1 shrink self-stretch my-auto min-w-[240px] max-md:max-w-full">
@@ -215,7 +215,7 @@ export const QuizDashboard: React.FC = () => {
   const [isRulesOpen, setIsRulesOpen] = React.useState(false);
 
   const toggleRules = () => {
-    setIsRulesOpen(!isRulesOpen); 
+    setIsRulesOpen(!isRulesOpen);
   };
 
   return (
@@ -240,9 +240,9 @@ export const QuizDashboard: React.FC = () => {
       <Header userName="User" />
 
       {/* Rules Section with Toggle */}
-      <section className="flex z-0 flex-col self-center max-w-full text-base font-medium text-white whitespace-nowrap w-[1441px]">
+      <section className="flex z-0 flex-col self-center max-w-full text-base font-medium text-white whitespace-nowrap w-full">
         <div className="flex overflow-hidden flex-col w-full h-[108px]">
-          <div className="flex flex-col justify-center px-44 py-8 w-full bg-indigo-300 max-md:px-5 max-md:max-w-full">
+          <div className="flex flex-col justify-center px-44 py-4 w-full bg-indigo-300 max-md:px-5 max-md:max-w-full">
             <div className="flex flex-col justify-center items-center px-96 w-full max-md:px-5 max-md:max-w-full">
               <div className="flex overflow-hidden flex-col max-w-full min-h-[55px] w-[190px]">
                 <button
@@ -254,23 +254,26 @@ export const QuizDashboard: React.FC = () => {
               </div>
             </div>
           </div>
-         
+
         </div>
         {/* Dropdown Content (Rules) */}
-        <div
-          className={`${
-            isRulesOpen ? "max-h-[590px] opacity-100" : "max-h-0 opacity-0"
-          } overflow-hidden transition-all duration-500 ease-in-out`}
-        >
-          <Rules />
-           {/* Reusable Rules content component */}
-        </div>
         
-      </section>
+          <div
+            className={`${isRulesOpen ? "max-h-[590px] opacity-100" : "max-h-0 opacity-0"
+              } overflow-hidden transition-all duration-500 ease-in-out`}
+          >
+
+            <Rules />
+            {/* Reusable Rules content component */}
+           
+          </div>
           
+       
+      </section>
+
       {/* Search Section */}
       <section className="flex overflow-hidden z-0 gap-10 items-center px-44 py-9 w-full min-h-[130px] max-md:px-5 max-md:max-w-full">
-        <SearchBar onSearch={() => {}} />
+        <SearchBar onSearch={() => { }} />
       </section>
 
       {/* Quiz Categories Section */}

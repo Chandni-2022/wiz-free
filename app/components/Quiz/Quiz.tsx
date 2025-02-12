@@ -1,220 +1,244 @@
-// "use client";
-// import * as React from "react";
-// import { QuizQuestion } from "./QuizQuestion";
-// import type { QuizQuestion as QuizQuestionType } from "./types";
+// "use client"
+// import { useState, useEffect } from "react";
+// import { Button } from "@/components/ui/button"; // Ensure correct import
+// import { Timer as TimerIcon, CheckCircle } from "lucide-react";
 
-// interface QuizProps {
-//   topicName: string;
-//   questions: QuizQuestionType[];
-// }
+// const questions = [
+//   { id: 1, text: "What is the capital of France?", options: ["Paris", "Rome", "London", "New York"], correct: "A" },
+//   { id: 2, text: "What is 2 + 2?", options: ["3", "4", "5", "6"], correct: "B" },
+//   { id: 3, text: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], correct: "B" },
+//   { id: 4, text: "Who wrote 'Hamlet'?", options: ["Shakespeare", "Dickens", "Austen", "Tolstoy"], correct: "A" },
+//   { id: 5, text: "What is the chemical symbol for water?", options: ["O2", "H2O", "CO2", "NaCl"], correct: "B" },
+// ];
 
-// export const Quiz: React.FC<QuizProps> = ({ topicName, questions }) => {
-//   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
-//   const [selectedAnswers, setSelectedAnswers] = React.useState<Record<string, string>>({});
+// export default function Quiz() {
+//   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+//   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
+//   const [timeUp, setTimeUp] = useState<boolean>(false);
+//   const [timeLeft, setTimeLeft] = useState<number>(9);
+//   const [showFinalMessage, setShowFinalMessage] = useState<boolean>(false);
+//   const [buttonsToggled, setButtonsToggled] = useState<boolean>(false);
 
-//   const handleAnswerSelect = (value: string) => {
-//     setSelectedAnswers(prev => ({
-//       ...prev,
-//       [questions[currentQuestionIndex].id]: value
-//     }));
-//   };
+//   useEffect(() => {
+//     if (timeLeft > 0) {
+//       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+//       return () => clearTimeout(timer);
+//     } else {
+//       setTimeUp(true);
+//       if (currentQuestion === questions.length - 1) {
+//         setShowFinalMessage(true);
+//         setButtonsToggled(true);
+//       }
+//     }
+//   }, [timeLeft]);
+
+//   useEffect(() => {
+//     if (timeUp && currentQuestion < questions.length - 1) {
+//       const timer = setTimeout(() => handleNext(), 2000);
+//       return () => clearTimeout(timer);
+//     }
+//   }, [timeUp, selectedAnswer]);
 
 //   const handleNext = () => {
-//     if (currentQuestionIndex < questions.length - 1) {
-//       setCurrentQuestionIndex(prev => prev + 1);
+//     if (currentQuestion < questions.length - 1) {
+//       setCurrentQuestion(currentQuestion + 1);
+//       setSelectedAnswer("");
+//       setTimeUp(false);
+//       setTimeLeft(9);
 //     }
 //   };
 
-//   const handleFinish = () => {
-//     console.log("Quiz finished", selectedAnswers);
-//   };
-
 //   return (
-//     <main className="flex flex-col bg-indigo-950">
-//       <header className="flex overflow-hidden gap-10 justify-center items-center px-44 py-14 w-full text-5xl font-bold leading-none text-center text-white min-h-[156px] max-md:px-5 max-md:max-w-full max-md:text-4xl">
-//         <h1 className="flex-1 shrink self-stretch my-auto w-full min-w-[240px] max-md:max-w-full max-md:text-4xl">
-//           {topicName}
-//         </h1>
-//       </header>
-//       <QuizQuestion
-//         question={questions[currentQuestionIndex]}
-//         onAnswerSelect={handleAnswerSelect}
-//         onNext={handleNext}
-//         onFinish={handleFinish}
-//         showTimeUp={false}
-//       />
-//     </main>
-//   );
-// };
-
-// "use client";
-// import * as React from "react";
-// import { useRouter } from "next/navigation";
-// import { QuizQuestion } from "./QuizQuestion";
-// import type { QuizQuestion as QuizQuestionType } from "./types";
-
-// interface QuizProps {
-//   topicName: string;
-//   questions: QuizQuestionType[];
-// }
-
-// export const Quiz: React.FC<QuizProps> = ({ topicName, questions }) => {
-//   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
-//   const [selectedAnswers, setSelectedAnswers] = React.useState<Record<string, string>>({});
-//   const [timeLeft, setTimeLeft] = React.useState(30); // Timer for each question (30 seconds)
-//   const [showTimeUp, setShowTimeUp] = React.useState(false);
-//   const router = useRouter(); // To navigate to the scorecard
-
-//   React.useEffect(() => {
-//     // Reset timer when the question changes
-//     setTimeLeft(30);
-//     setShowTimeUp(false);
-
-//     const timer = setInterval(() => {
-//       setTimeLeft((prev) => {
-//         if (prev <= 1) {
-//           clearInterval(timer);
-//           setShowTimeUp(true);
-//           handleNext();
-//         }
-//         return prev - 1;
-//       });
-//     }, 1000);
-
-//     return () => clearInterval(timer);
-//   }, [currentQuestionIndex]);
-
-//   const handleAnswerSelect = (value: string) => {
-//     setSelectedAnswers((prev) => ({
-//       ...prev,
-//       [questions[currentQuestionIndex].id]: value,
-//     }));
-//   };
-
-//   const handleNext = () => {
-//     if (currentQuestionIndex < questions.length - 1) {
-//       setCurrentQuestionIndex((prev) => prev + 1);
-//     }
-//   };
-
-//   const handleFinish = () => {
-//     console.log("Quiz finished", selectedAnswers);
-//     // Navigate to the scorecard page with results
-//     router.push("/components/Result");
-//   };
-
-//   return (
-//     <main className="flex flex-col bg-indigo-950">
-//       {/* Header */}
-//       <header className="flex overflow-hidden gap-10 justify-center items-center px-44 py-14 w-full text-5xl font-bold leading-none text-center text-white min-h-[156px] max-md:px-5 max-md:max-w-full max-md:text-4xl">
-//         <h1 className="flex-1 shrink self-stretch my-auto w-full min-w-[240px] max-md:max-w-full max-md:text-4xl">
-//           {topicName}
-//         </h1>
-//       </header>
-
-//       {/* Timer */}
-//       <div className="text-2xl text-white text-center mb-4">
-//         Time left: {timeLeft} seconds
+//     <div className="min-h-screen text-white p-4 md:p-8 lg:px-32">
+//       <div className="max-w-7xl mx-auto">
+//         <h1 className="text-4xl font-bold text-center mb-12">Topic Name</h1>
+//         <div className="flex justify-center items-center gap-3 mb-16">
+//           <TimerIcon className="w-8 h-8" />
+//           <span className="text-2xl font-mono">0:{timeLeft.toString().padStart(2, "0")}</span>
+//         </div>
+//         <div className="grid md:grid-cols-2 gap-8">
+//           <div>
+//             <h2 className="text-3xl font-bold mb-4">Question {currentQuestion + 1}</h2>
+//             <p className="text-xl">{questions[currentQuestion].text}</p>
+//           </div>
+//           <div>
+//             <div className="space-y-8 mb-8">
+//               {questions[currentQuestion].options.map((option, index) => (
+//                 <button
+//                   key={index}
+//                   onClick={() => setSelectedAnswer(option)}
+//                   className={`w-full p-4 rounded-lg border border-white hover:bg-[#2A2B4A] transition-colors
+//                     flex items-center gap-4 text-left
+//                     ${selectedAnswer === option ? "bg-[#2A2B4A]" : ""}
+//                   `}
+//                 >
+//                   <div className="w-6 h-6 border border-white rounded flex-shrink-0 flex items-center justify-center">
+//                     {selectedAnswer === option && <CheckCircle className="w-5 h-5 text-blue-400" />}
+//                   </div>
+//                   <span className="text-lg">
+//                     {String.fromCharCode(65 + index)}: {option}
+//                   </span>
+//                 </button>
+//               ))}
+//             </div>
+//             <div className="flex justify-between gap-16 mt-10">
+//               <Button 
+//                 onClick={handleNext} 
+//                 className={`flex-1 py-6 text-lg text-white ${buttonsToggled ? "bg-[#F77F00]" : "bg-[#5CC1E6] hover:bg-[#4BA1C6]"}`}
+//               >
+//                 {buttonsToggled ? "Evaluate Quiz" : "Next"}
+//               </Button>
+//               <Button 
+//                 variant="outline" 
+//                 className={`flex-1 py-6 text-lg ${buttonsToggled ? "bg-gray-500 text-white border-none" : "border-white text-white hover:bg-white/10"}`}
+//               >
+//                 {buttonsToggled ? "No More Questions" : "Finish Test"}
+//               </Button>
+//             </div>
+//             {timeUp && !selectedAnswer && currentQuestion < questions.length - 1 && (
+//               <div className="mt-10 text-center text-xl">Time's up! Moving to the next question</div>
+//             )}
+//           </div>
+//         </div>
 //       </div>
-
-//       {/* Current Question */}
-//       <QuizQuestion
-//         question={questions[currentQuestionIndex]}
-//         onAnswerSelect={handleAnswerSelect}
-//         onNext={handleNext}
-//         onFinish={handleFinish}
-//         showTimeUp={showTimeUp}
-//       />
-
-//       {/* Finish Button */}
-//       {currentQuestionIndex === questions.length - 1 && (
-//         <div className="flex justify-center mt-6">
-//           <button
-//             onClick={handleFinish}
-//             className="px-4 py-2 bg-sky-500 text-white font-bold rounded-lg"
-//           >
-//             Finish Quiz
-//           </button>
+//       {showFinalMessage && (
+//         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50" onClick={() => setShowFinalMessage(false)}>
+//           <div className="bg-white text-black rounded-lg p-8 max-w-md w-full text-center">
+//             <div className="bg-[#B1C6FF] p-4">
+//               <p className="text-2xl font-semibold mb-2">Time's up!</p>
+//               <p className="text-lg">Your quiz will be submitted automatically</p>
+//             </div>
+//           </div>
 //         </div>
 //       )}
-//     </main>
+//     </div>
 //   );
-// };
+// }
 
-"use client";
-import * as React from "react";
-import { QuizQuestion } from "./QuizQuestion";
-import type { QuizQuestion as QuizQuestionType } from "./types";
 
-interface QuizProps {
-  topicName: string;
-  questions: QuizQuestionType[];
-}
+"use client"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button"; // Ensure correct import
+import { Timer as TimerIcon, CheckCircle } from "lucide-react";
+import Link from "next/link";
 
-export const Quiz: React.FC<QuizProps> = ({ topicName, questions }) => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
-  const [selectedAnswers, setSelectedAnswers] = React.useState<Record<string, string>>({});
-  const [showTimeUp, setShowTimeUp] = React.useState(false);
-  const timerDuration = 30; // 30 seconds per question
-  const timerRef = React.useRef<NodeJS.Timeout | null>(null);
+const questions = [
+  { id: 1, text: "What is the capital of France?", options: ["Paris", "Rome", "London", "New York"], correct: "A" },
+  { id: 2, text: "What is 2 + 2?", options: ["3", "4", "5", "6"], correct: "B" },
+  { id: 3, text: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], correct: "B" },
+  { id: 4, text: "Who wrote 'Hamlet'?", options: ["Shakespeare", "Dickens", "Austen", "Tolstoy"], correct: "A" },
+  { id: 5, text: "What is the chemical symbol for water?", options: ["O2", "H2O", "CO2", "NaCl"], correct: "B" },
+];
 
-  const handleAnswerSelect = (value: string) => {
-    setSelectedAnswers((prev) => ({
-      ...prev,
-      [questions[currentQuestionIndex].id]: value,
-    }));
-  };
+export default function Quiz() {
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<string>("");
+  const [timeUp, setTimeUp] = useState<boolean>(false);
+  const [timeLeft, setTimeLeft] = useState<number>(9);
+  const [showFinalMessage, setShowFinalMessage] = useState<boolean>(false);
+  const [buttonsToggled, setButtonsToggled] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (timeLeft > 0) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else {
+      setTimeUp(true);
+      if (currentQuestion === questions.length - 1) {
+        setShowFinalMessage(true);
+        setButtonsToggled(true);
+      }
+    }
+  }, [timeLeft]);
+
+  useEffect(() => {
+    if (timeUp && currentQuestion < questions.length - 1) {
+      const timer = setTimeout(() => handleNext(), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [timeUp, selectedAnswer]);
 
   const handleNext = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-      resetTimer();
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setSelectedAnswer("");
+      setTimeUp(false);
+      setTimeLeft(9);
     }
   };
-
-  const handleFinish = () => {
-    console.log("Quiz finished", selectedAnswers);
-    // Navigate to the results page or show scoreCard
-    window.location.href = "/components/Result";
-  };
-
-  const startTimer = () => {
-    setShowTimeUp(false);
-    timerRef.current = setTimeout(() => {
-      setShowTimeUp(true);
-      handleNext();
-    }, timerDuration * 1000);
-  };
-
-  const resetTimer = () => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-    }
-    startTimer();
-  };
-
-  React.useEffect(() => {
-    startTimer();
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, [currentQuestionIndex]);
 
   return (
-    <main className="flex flex-col bg-indigo-950">
-      <header className="flex overflow-hidden gap-10 justify-center items-center px-44 py-14 w-full text-5xl font-bold leading-none text-center text-white min-h-[156px] max-md:px-5 max-md:max-w-full max-md:text-4xl">
-        <h1 className="flex-1 shrink self-stretch my-auto w-full min-w-[240px] max-md:max-w-full max-md:text-4xl">
-          {topicName}
-        </h1>
-      </header>
-      <QuizQuestion
-        question={questions[currentQuestionIndex]}
-        onAnswerSelect={handleAnswerSelect}
-        onNext={handleNext}
-        onFinish={handleFinish}
-        showTimeUp={showTimeUp}
-        
-      />
-    </main>
+    <div className="min-h-screen text-white p-4 md:p-8 lg:px-32">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-4xl font-bold text-center mb-12">Topic Name</h1>
+        <div className="flex justify-center items-center gap-3 mb-16">
+          <TimerIcon className="w-8 h-8" />
+          <span className="text-2xl font-mono">0:{timeLeft.toString().padStart(2, "0")}</span>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">Question {currentQuestion + 1}</h2>
+            <p className="text-xl">{questions[currentQuestion].text}</p>
+          </div>
+          <div>
+            <div className="space-y-8 mb-8">
+              {questions[currentQuestion].options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    if (!(timeUp && currentQuestion === questions.length - 1)) {
+                      setSelectedAnswer(option);
+                    }
+                  }}
+                  className={`w-full p-4 rounded-lg border border-white hover:bg-[#2A2B4A] transition-colors
+                    flex items-center gap-4 text-left
+                    ${selectedAnswer === option ? "bg-[#2A2B4A]" : ""}
+                    ${timeUp && currentQuestion === questions.length - 1 ? "cursor-not-allowed opacity-50" : ""}
+                  `}
+                  disabled={timeUp && currentQuestion === questions.length - 1}
+                >
+                  <div className="w-6 h-6 border border-white rounded flex-shrink-0 flex items-center justify-center">
+                    {selectedAnswer === option && <CheckCircle className="w-5 h-5 text-blue-400" />}
+                  </div>
+                  <span className="text-lg">
+                    {String.fromCharCode(65 + index)}: {option}
+                  </span>
+                </button>
+              ))}
+            </div>
+            <div className="flex justify-between gap-16 mt-10">
+              <Button
+                onClick={handleNext}
+                className={`flex-1 py-6 text-lg text-white ${buttonsToggled ? "bg-[#5CC1E6]" : "bg-[#5CC1E6] hover:bg-[#5CC1E6]"}`}
+              >
+                {buttonsToggled ? "Evaluate Quiz" : "Next"}
+              </Button>
+              <Link href="/result" passHref legacyBehavior>
+              <Button
+                variant="outline"
+                className="flex-1 py-6 text-lg border-white text-white hover:bg-white/10"
+              >
+                Finish Test
+              </Button>
+              </Link>
+
+            </div>
+            {timeUp && !selectedAnswer && currentQuestion < questions.length - 1 && (
+              <div className="mt-10 text-center text-xl">Time's up! Moving to the next question</div>
+            )}
+          </div>
+        </div>
+      </div>
+      {showFinalMessage && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50" onClick={() => setShowFinalMessage(false)}>
+          <div className="bg-white text-black rounded-lg p-8 max-w-md w-full text-center">
+            <div className="bg-[#B1C6FF] p-4">
+              <p className="text-2xl font-semibold mb-2">Time's up!</p>
+              <p className="text-lg">Your quiz will be submitted automatically</p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
-};
+}
