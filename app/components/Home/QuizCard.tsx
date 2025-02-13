@@ -11,7 +11,7 @@ interface QuizCardProps {
 export const QuizCard: React.FC<QuizCardProps> = ({
   title,
   description,
-  isHighlighted,
+  // isHighlighted,
   showDescription,
 }) => {
   const [hovered, setHovered] = useState(false);

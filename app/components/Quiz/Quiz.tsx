@@ -224,7 +224,7 @@ export default function Quiz() {
 
             </div>
             {timeUp && !selectedAnswer && currentQuestion < questions.length - 1 && (
-              <div className="mt-10 text-center text-xl">Time's up! Moving to the next question</div>
+              <div className="mt-10 text-center text-xl">Time is up! Moving to the next question</div>
             )}
           </div>
         </div>
@@ -233,7 +233,7 @@ export default function Quiz() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50" onClick={() => setShowFinalMessage(false)}>
           <div className="bg-white text-black rounded-lg p-8 max-w-md w-full text-center">
             <div className="bg-[#B1C6FF] p-4">
-              <p className="text-2xl font-semibold mb-2">Time's up!</p>
+              <p className="text-2xl font-semibold mb-2">Time is up!</p>
               <p className="text-lg">Your quiz will be submitted automatically</p>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { InstructionSection } from "./InstructionSection";
 import { QuizInstructionsProps } from "./types";
-import Image from "next/image";
+// import Image from "next/image";
 
 export const QuizInstructions: React.FC<QuizInstructionsProps> = ({ title, subtitle, sections }) => {
   return (
