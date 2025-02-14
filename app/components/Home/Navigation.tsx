@@ -4,6 +4,8 @@ import { NavigationProps } from "./types";
 import Link from "next/link";
 import { Menu, X } from "lucide-react"; // Importing icons for better UI
 
+
+
 export const Navigation: React.FC<NavigationProps> = ({
   onHomeClick,
   onProfileClick,
@@ -33,12 +35,14 @@ export const Navigation: React.FC<NavigationProps> = ({
           >
             Home
           </button>
+          <Link href="/profile" passHref legacyBehavior>
           <button
             onClick={onProfileClick}
             className="py-2 px-4 text-white hover:text-gray-900 dark:text-gray-200 dark:hover:text-white"
           >
             Profile
           </button>
+          </Link>
           <Link href="/login" passHref legacyBehavior>
           <button
             onClick={onLogoutClick}

@@ -19,3 +19,16 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Custom styles for the Select component */
+.select-trigger {
+  @apply bg-[#1e1f45] border-0 text-white;
+}
+
+.select-content {
+  @apply bg-[#1e1f45] border-gray-700;
+}
+
+.select-item {
+  @apply text-white hover:bg-[#2A2B4A];
+}
+
